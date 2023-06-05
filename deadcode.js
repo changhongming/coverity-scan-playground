@@ -1,6 +1,5 @@
 const instance = {
-    searchQuerySet() {
-        const { q } = this.queryParam;
+    searchQuerySet(q) {
         if (!Array.isArray(q?.a)) {
             return '1';
         }
