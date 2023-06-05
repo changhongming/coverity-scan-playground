@@ -52,6 +52,10 @@ function searchContextWithAuthQuery(uri, data, options, urlOpts) {
                 return getUrlWithQuery(val, authData);
             }
 
+            if (data?.items?.length === undefined || data?.items?.length === null) {
+                return options?.success(data);
+            } 
+
             if (typeof data?.items?.length === 'number' && isFinite(data?.items?.length) && data?.items?.length > 0) {
                 data.items = data.items.map(item => {
                     item.actions = _.mapObject(item.actions, transformCb);
