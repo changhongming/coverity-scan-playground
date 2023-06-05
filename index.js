@@ -36,6 +36,10 @@ function searchContextWithAuthQuery(uri, data, options, urlOpts) {
     const combineOpts = { ...options };
     combineOpts.success = (data) => {
         const authData = [];
+        if (data == null) {
+            return options?.success(data);
+        }
+
         if (data?.auth_params) {
             const authParams = data.auth_params;
             for (const key in authParams) {
