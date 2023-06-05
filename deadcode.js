@@ -1,16 +1,13 @@
 const instance = {
-    queryParam: {
-        q: null,
-    },
     searchQuerySet() {
         const { q } = this.queryParam;
         if (!Array.isArray(q?.a)) {
-            return;
+            return '1';
         }
         const str = q?.a[0];
 
-        if (typeof str !== 'string') return;
+        if (typeof str !== 'string') return '2';
 
-        return;
+        return '3';
     }
 }
