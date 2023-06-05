@@ -15,4 +15,4 @@ jobs:
         email: ${{ secrets.COVERITY_SCAN_EMAIL }}
         token: ${{ secrets.COVERITY_SCAN_TOKEN }}
         build_language: 'javascript'
-        command: '--no-command'
+        command: '--no-command --fs-capture-search ${{ github.workspace }}'
