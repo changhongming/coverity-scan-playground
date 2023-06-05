@@ -15,4 +15,4 @@ jobs:
         email: ${{ secrets.COVERITY_SCAN_EMAIL }}
         token: ${{ secrets.COVERITY_SCAN_TOKEN }}
         build_language: 'javascript'
-        command: '--no-command --fs-capture-search ./'
+        command: '--no-command --fs-capture-search ${{ github.workspace }} --fs-capture-search-exclude-regex javascript="/cov-analysis/.*"'
