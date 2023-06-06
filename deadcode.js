@@ -28,7 +28,7 @@ function earlyReturn(a) {
         return 'null';
     }
 
-    if (a.prop) {
+    if (a.prop.prop2) {
         return a.prop;
     }
     return a.default;
@@ -36,7 +36,7 @@ function earlyReturn(a) {
 
 function nestedCondition(a) {
     if (a != null) {
-        if (a.prop) {
+        if (a.prop.prop2) {
             return a.prop;
         }
         return a.default;
@@ -44,6 +44,36 @@ function nestedCondition(a) {
         return 'null';
     }
 }
+
+function earlyReturnOC(a) {
+    if (a == null) {
+        return 'null';
+    }
+
+    if (a?.prop?.prop2) {
+        return a.prop;
+    }
+    return a.default;
+}
+
+function nestedConditionOC(a) {
+    if (a != null) {
+        if (a?.prop?.prop2) {
+            return a.prop;
+        }
+        return a.default;
+    } else {
+        return 'null';
+    }
+}
+
+function earlyReturnWithoutNullCheckOC(a) {
+    if (a?.prop?.prop2) {
+        return a.prop;
+    }
+    return a.default;
+}
+
 
 
 function testDeadCode(q) {
