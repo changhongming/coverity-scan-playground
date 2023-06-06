@@ -71,4 +71,38 @@ function searchContextWithAuthQuery(uri, data, options, urlOpts) {
     return this.api(uri, data, combineOpts, urlOpts);
 }
 
+function testFn(a, b, c, d) {
+    const combineOpts = { ...c };
+    combineOpts.s = (b) => {
+        const e = [];
+        if (b?.a_p) {
+            const ap = b.a_p;
+            for (const key in ap) {
+                e.push({
+                    key,
+                    value: ap[key]
+                });
+            }
+
+            function cb(val) {
+                if (_.isObject(val)) {
+                    return _.mapObject(val, cb);
+                }
+                return getUrlWithQuery(val, e);
+            }
+
+            if (b?.bi?.length > 0) {
+                b.bi = b.bi.map(i => {
+                    i.a = _.mapObject(i.a, cb);
+                    i.p = _.mapObject(i.p, cb);
+                    return i;
+                });
+            }
+        }
+
+        return c?.s(b);
+    };
+    return window.api(a, b, combineOpts, d);
+}
+
 main();
