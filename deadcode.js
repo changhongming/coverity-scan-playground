@@ -23,6 +23,29 @@ const instance = {
     },
 }
 
+function earlyReturn(a) {
+    if (a == null) {
+        return 'null';
+    }
+
+    if (a.prop) {
+        return a.prop;
+    }
+    return a.default;
+}
+
+function nestedCondition(a) {
+    if (a != null) {
+        if (a.prop) {
+            return a.prop;
+        }
+        return a.default;
+    } else {
+        return 'null';
+    }
+}
+
+
 function testDeadCode(q) {
     if (!Array.isArray(q?.a)) {
         return '1';
