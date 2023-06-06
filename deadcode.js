@@ -71,7 +71,22 @@ function earlyReturnWithoutNullCheckOC(a) {
     if (a?.prop?.prop2) {
         return a.prop;
     }
-    return a.default;
+    return a?.default;
+}
+
+function accessDifPropsOC(a) {
+    if (a?.p1) {
+        let p1 = a.p1;
+
+        if (a?.p2?.p3) {
+            return p1 + a.p2.p3;
+        }
+
+
+        return a?.p4;
+    }
+
+    return a;
 }
 
 
